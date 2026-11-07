@@ -1,0 +1,260 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html, body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+	font-weight: bold;
+}
+
+header {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	padding: 20px;
+	background: linear-gradient(to bottom, white, lightsteelblue);
+	border-bottom: 2px solid steelblue;
+}
+
+header img {
+	height: 60px;
+	width: auto;
+}
+
+header h1 {
+	font-size: 2.2em;
+	color: steelblue;
+	font-style: italic;
+	margin-bottom: 5px;
+}
+
+header h2 {
+	font-size: 1.3em;
+	margin-top: 0;
+}
+
+/*Navigation Base Mobile First Dropdown*/
+#topMenu {
+	background-color: steelblue;
+	position: relative;
+}
+
+#topMenu input[type="checkbox"]{
+	display: none;
+}
+
+.menu-btn {
+	display: block;
+	padding: 0.75em 1em;
+	color: white;
+	font-size: 1.2em;
+	cursor: pointer;
+	text-align: left;
+}
+
+.menu {
+	list-style-type: none;
+	display: none;
+	flex-direction: column;
+	background-color: steelblue;
+	width: 100%;
+}
+
+#topMenu input[type="checkbox"]:checked ~ .menu {
+	display: flex;
+}
+
+#topMenu input[type="checkbox"]:checked ~ .menu-btn::before{
+	content: "\2715";
+}
+
+#topMenu input[type="checkbox"]:not(:checked) ~ .menu-btn::before {
+	content: "\2630";
+}
+
+.menu a {
+	color: white;
+	text-decoration: none;
+	display: block;
+	padding: 0.75em 1em;
+	border-radius: 5px;
+}
+
+.menu a:focus,
+.menu a.current {
+	border: 2px solid white;
+}
+
+.menu li:has(.submenu) {
+	position: relative;
+}
+
+.menu li:has(.submenu):hover > .submenu {
+	display: block;
+}
+
+.submenu {
+	position: absolute;
+	display: none;
+	left: 100%;
+	top: 0;
+	background-color: steelblue;
+	color: white;
+	list-style-type: none;
+	z-index: 1000;
+	width: 12em;
+}
+
+.submenu a {
+	padding: 0.5em 1em;
+}
+
+/*Main Content Layout*/
+main {
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+	gap: 20px;
+}
+
+section {
+	width: 100%;
+}
+
+section h1 {
+	font-size: 1.6em;
+	margin-bottom: 12px;
+}
+
+section h2 {
+	font-size: 1.3em;
+	color: maroon;
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+
+section h3 {
+	font-size: 1.1em;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+section p {
+	line-height: 1.4;
+	margin-bottom: 10px;
+}
+
+section ul {
+	margin-left: 20px;
+	margin-bottom: 10px;
+	line-height: 1.5;
+}
+
+section a:link,
+section a:visited {
+	color: maroon;
+}
+
+section a:hover,
+section a:focus {
+	color: steelblue;
+}
+
+/*Additional Resources sidebar*/
+#sidebar {
+	width: 100%;
+	border: 2px solid steelblue;
+	border-radius: 12px;
+	padding: 20px;
+	margin-bottom: 10px;
+	float: right;
+}
+
+#sidebar ul{
+	line-height: 1.6;
+	padding-left: 12px;
+	list-style-type: square;
+}
+
+#sidebar h2 {
+	color: maroon;
+	font-size: 1.3em;
+	margin-bottom: 12px;
+}
+
+#sidebar a:visited,
+#sidebar a:link {
+	color: steelblue;
+}
+
+#sidebar a:hover,
+#sidebar a:focus {
+	color: maroon;
+}
+
+body {
+	width: 100%;
+	max-width: 980px;
+	margin: 0 auto;
+	border: 1px solid steelblue;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+	background-color: #ffffff;
+}
+
+footer {
+	text-align: center;
+	font-size: 0.85em;
+	background-color: steelblue;
+	color: white;
+	padding: 12px 0;
+}
+
+@media (min-width: 600px){
+	.menu-btn {
+		display: none;
+	}
+	.menu {
+		display: flex !important;
+		flex-direction: row;
+		justify-content: space-around;
+		height: auto;
+	}
+
+	.submenu {
+		top: 100%;
+		left: 0;
+	}
+
+	.menu li:has(.submenu) small.arrow::before{
+		content: "\25BC";
+	}
+
+	.menu li:has(.submenu) small.arrow{
+		font-size: 0;
+	}
+
+	.menu li:has(.submenu) small::before{
+		font-size: initial;
+	}
+}
+
+@media (min-width: 760px){
+	main {
+		flex-direction: row;
+		align-items: flex-start;
+	}
+
+	section {
+		flex-basis: 65%;
+	}
+
+	#sidebar {
+		flex-basis: 30%;
+		width: auto;
+	}
+}
